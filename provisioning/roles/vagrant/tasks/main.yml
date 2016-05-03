@@ -1,16 +1,29 @@
 ---
+- name: "check whether vagrant exists"
+  shell: command -v vagrant
+  ignore_errors: True
+  register: result
+  changed_when: false
+  always_run: yes
+
 - name: "Create temporary directory"
   shell: mktemp -d
   register: tempdir
+  when:
+    result | failed
 
 - name: "Download vagrant"
   get_url: 
     url={{ vagrant_url }} 
     dest={{ vagrant_dir_tmp }}/vagrant.deb 
     force=yes
+  when:
+    result | failed
 
 - name: "Install vagrant"
   command: dpkg -i {{ vagrant_dir_tmp }}/vagrant.deb
+  when:
+    result | failed
 
 - name: "Install vagrant-lxc plugin"
   shell: vagrant plugin install vagrant-lxc
