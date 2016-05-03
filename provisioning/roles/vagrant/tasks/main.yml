@@ -16,6 +16,12 @@
   shell: vagrant plugin install vagrant-lxc
 
 - name: "Cleanup temporary directory"
-  file: name={{ tempdir.stdout }} state=absent
-  tags:
-    - vagrant
+  file: 
+    name={{ tempdir.stdout }} 
+    state=absent
+
+- name: "Run vagrant-lxc"
+  shell: "sudo runuser -l root -c 'cd /vagrant/vagrant-host/ && vagrant up'"
+  with_items:
+    - vagrant up
+  ignore_errors: yes

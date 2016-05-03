@@ -1,11 +1,4 @@
-# Ansible playbook for a Drupal idevels server.
-#
-# If this is being used within a Vagrant profile, you can update your server
-# by running `vagrant provision` again.
-#
-# @author mula (2015).
-#
-
+---
 - hosts: local
   gather_facts: yes
   become: true
@@ -14,9 +7,9 @@
     - vars/local.yml
 
   roles:
-  - osupgrade
-  - lxc
-  - vagrant
+    - osupgrade
+    - lxc
+    - vagrant
 
   tags:
     - local

@@ -23,7 +23,7 @@ end
 
 Vagrant.configure("2") do |config|
   config.vm.define "workstation" do |workstation|
-    workstation.vm.box = "ubuntu/trusty64"
+    workstation.vm.box = "ubuntu/wily64"
   end
 
 # Ansible provisioning (you need to have ansible installed)    
