@@ -24,6 +24,7 @@ end
 Vagrant.configure("2") do |config|
   config.vm.define "workstation" do |workstation|
     workstation.vm.box = "ubuntu/wily64"
+    workstation.vm.network :forwarded_port, host: 2200, guest: 22
   end
 
   config.vm.provider :virtualbox do |v|
