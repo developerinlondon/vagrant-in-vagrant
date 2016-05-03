@@ -25,12 +25,14 @@ Vagrant.configure("2") do |config|
   config.vm.define "workstation" do |workstation|
     workstation.vm.box = "ubuntu/wily64"
     workstation.vm.network :forwarded_port, host: 2200, guest: 22
+    workstation.vm.network :private_network, ip: "192.168.33.3"
   end
 
   config.vm.provider :virtualbox do |v|
     v.customize ["modifyvm", :id, "--memory", 2048]
     v.customize ["modifyvm", :id, "--cpus", 2]
     v.customize ["modifyvm", :id, "--ioapic", "on"]
+    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
 # Ansible provisioning (you need to have ansible installed)    
