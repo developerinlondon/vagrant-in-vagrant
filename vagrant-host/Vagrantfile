@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "wily" do |wily|
-    wily.vm.box = "xenial"
+    wily.vm.box = "wily"
     wily.vm.box_url = "https://www.dropbox.com/s/5vexe5fjzozrcdg/vagrant-lxc-wily-amd64.box"
     wily.vm.provider :lxc do |lxc|
     # Same effect as 'customize ["modifyvm", :id, "--memory", "1024"]' for VirtualBox
