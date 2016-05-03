@@ -16,6 +16,7 @@
   roles:
   - osupgrade
   - lxc
+  - vagrant
 
   tags:
     - local

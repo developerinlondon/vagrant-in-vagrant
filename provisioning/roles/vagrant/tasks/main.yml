@@ -1,0 +1,21 @@
+---
+- name: "Create temporary directory"
+  shell: mktemp -d
+  register: tempdir
+
+- name: "Download vagrant"
+  get_url: 
+    url={{ vagrant_url }} 
+    dest={{ vagrant_dir_tmp }}/vagrant.deb 
+    force=yes
+
+- name: "Install vagrant"
+  command: dpkg -i {{ vagrant_dir_tmp }}/vagrant.deb
+
+- name: "Install vagrant-lxc plugin"
+  shell: vagrant plugin install vagrant-lxc
+
+- name: "Cleanup temporary directory"
+  file: name={{ tempdir.stdout }} state=absent
+  tags:
+    - vagrant
