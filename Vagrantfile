@@ -26,6 +26,12 @@ Vagrant.configure("2") do |config|
     workstation.vm.box = "ubuntu/wily64"
   end
 
+  config.vm.provider :virtualbox do |v|
+    v.customize ["modifyvm", :id, "--memory", 2048]
+    v.customize ["modifyvm", :id, "--cpus", 2]
+    v.customize ["modifyvm", :id, "--ioapic", "on"]
+  end
+
 # Ansible provisioning (you need to have ansible installed)    
   if which('ansible-playbook')
     config.vm.provision "ansible" do |ansible|
