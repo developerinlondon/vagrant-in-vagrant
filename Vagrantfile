@@ -11,7 +11,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "workstation" do |workstation|
     workstation.vm.box = "ubuntu/wily64"
-    workstation.vm.provision :shell, path: "provision.sh", args: ["default"]
+    workstation.vm.provision :shell, path: "provisioners/init.sh", args: ["default"]
+    workstation.vm.provision :shell, path: "provisioners/install_ansible.sh", args: ["default"]
   end
 
   config.vm.provider :virtualbox do |v|
