@@ -1,7 +1,5 @@
 Vagrant.configure("2") do |config|
-#  config.vm.box = "fgrehm/trusty64-lxc"
   config.vm.define "xenial" do |xenial|
-   # xenial.vm.box = "xenial"
     xenial.vm.box = "developerinlondon/ubuntu_lxc_xenial_x64"
     xenial.vm.provider :lxc do |lxc|
       lxc.customize 'cgroup.memory.limit_in_bytes', '1024M'
@@ -9,10 +7,8 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "wily" do |wily|
-   # wily.vm.box = "wily"
     wily.vm.box = "developerinlondon/ubuntu_lxc_wily_x64"
     wily.vm.provider :lxc do |lxc|
-    # Same effect as 'customize ["modifyvm", :id, "--memory", "1024"]' for VirtualBox
       lxc.customize 'cgroup.memory.limit_in_bytes', '1024M'
     end
   end

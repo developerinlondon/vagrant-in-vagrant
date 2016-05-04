@@ -1,3 +1,1 @@
 .vagrant
-provisioning/playbook.retry
-provisioning/callback_plugins/profile_tasks.pyc
