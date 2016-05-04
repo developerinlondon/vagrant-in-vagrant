@@ -26,29 +26,14 @@ Vagrant.configure("2") do |config|
     workstation.vm.box = "ubuntu/wily64"
     workstation.vm.network :forwarded_port, host: 2200, guest: 22
     workstation.vm.network :private_network, ip: "192.168.33.3"
+    workstation.vm.provision :shell, path: "provisioning/provision.sh", args: ["default"]
   end
 
   config.vm.provider :virtualbox do |v|
+    v.customize ["modifyvm", :id, "--name", "Vagrant-in-vagrant"]
     v.customize ["modifyvm", :id, "--memory", 2048]
     v.customize ["modifyvm", :id, "--cpus", 2]
     v.customize ["modifyvm", :id, "--ioapic", "on"]
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
-
-# Ansible provisioning (you need to have ansible installed)    
-  if which('ansible-playbook')
-    config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "provisioning/playbook.yml"
-      ansible.inventory_path = "provisioning/inventory"
-      ansible.limit = 'all'
-      # Run commands as root.
-      ansible.sudo = true
-      # ansible.raw_arguments = ['-v']
-      # run only local enviroment
-      ansible.tags = 'local'
-    end
-  else
-    config.vm.provision :shell, path: "provisioning/provision.sh", args: ["default"]
-  end
-
 end
