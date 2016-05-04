@@ -36,21 +36,4 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--ioapic", "on"]
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
-
-# Ansible provisioning (you need to have ansible installed)    
-  if which('ansible-playbook')
-    config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "provisioning/playbook.yml"
-      ansible.inventory_path = "provisioning/inventory"
-      ansible.limit = 'all'
-      # Run commands as root.
-      ansible.sudo = true
-      ansible.raw_arguments = ['-vvv']
-      # run only local enviroment
-      ansible.tags = 'local'
-    end
-  else
-    config.vm.provision :shell, path: "provisioning/provision.sh", args: ["default"]
-  end
-
 end
