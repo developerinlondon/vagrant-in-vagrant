@@ -44,22 +44,22 @@
   when:
     result | failed
 
-- name: "Download wily lxc box"
-  shell: "cd /tmp && wget https://www.dropbox.com/s/5vexe5fjzozrcdg/vagrant-lxc-wily-amd64.box"
-  ignore_errors: yes
+#- name: "Download wily lxc box"
+#  shell: "cd /tmp && wget https://www.dropbox.com/s/5vexe5fjzozrcdg/vagrant-lxc-wily-amd64.box"
+#  ignore_errors: yes
 
-- name: "Download xenial lxc box"
-  shell: "cd /tmp && wget https://www.dropbox.com/s/vfb15qcivvlsjlq/vagrant-lxc-xenial-amd64.box"
-  ignore_errors: yes
+#- name: "Download xenial lxc box"
+#  shell: "cd /tmp && wget https://www.dropbox.com/s/vfb15qcivvlsjlq/vagrant-lxc-xenial-amd64.box"
+#  ignore_errors: yes
 
 
-- name: "Add wily lxc box"
-  shell: "sudo runuser -l root -c 'vagrant box add -f wily /tmp/vagrant-lxc-wily-amd64.box && rm /tmp/vagrant-lxc-wily-amd64.box'"
-  ignore_errors: yes
+#- name: "Add wily lxc box"
+#  shell: "sudo runuser -l root -c 'vagrant box add -f wily /tmp/vagrant-lxc-wily-amd64.box && rm /tmp/vagrant-lxc-wily-amd64.box'"
+#  ignore_errors: yes
 
-- name: "Add xenial lxc box"
-  shell: "sudo runuser -l root -c 'vagrant box add -f xenial /tmp/vagrant-lxc-xenial-amd64.box && rm /tmp/vagrant-lxc-xenial-amd64.box'"
-  ignore_errors: yes
+#- name: "Add xenial lxc box"
+#  shell: "sudo runuser -l root -c 'vagrant box add -f xenial /tmp/vagrant-lxc-xenial-amd64.box && rm /tmp/vagrant-lxc-xenial-amd64.box'"
+#  ignore_errors: yes
 
 #- name: "Run vagrant-lxc"
 #  shell: "sudo runuser -l root -c 'cd /vagrant/vagrant-host/ && vagrant up'"
