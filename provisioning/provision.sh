@@ -6,5 +6,5 @@ echo "Runing ansible scripts"
 sudo ansible-playbook /vagrant/provisioning/playbook.yml --inventory-file=/vagrant/provisioning/inventory --tags=osupgrade --connection=local
 sudo ansible-playbook /vagrant/provisioning/playbook.yml --inventory-file=/vagrant/provisioning/inventory --tags=lxc --connection=local
 sudo ansible-playbook /vagrant/provisioning/playbook.yml --inventory-file=/vagrant/provisioning/inventory --tags=vagrant --connection=local
-echo "Executing bagrant up"
+echo "Executing vagrant up"
 sudo runuser -l root -c 'cd /vagrant/vagrant-host/ && vagrant up'
