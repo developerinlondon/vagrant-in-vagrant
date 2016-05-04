@@ -36,7 +36,6 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--ioapic", "on"]
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
-<<<<<<< HEAD
 
 # Ansible provisioning (you need to have ansible installed)    
   if which('ansible-playbook')
