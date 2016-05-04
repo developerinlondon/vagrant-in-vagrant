@@ -20,7 +20,7 @@
     result | failed
 
 - name: "Download vagrant"
-  get_url: 
+  get_url:
     url={{ vagrant_url }}
     dest={{ vagrant_dir_tmp }}/vagrant.deb
     force=yes
@@ -38,7 +38,7 @@
     result_lxc | failed
 
 - name: "Cleanup temporary directory"
-  file: 
+  file:
     name={{ tempdir.stdout }}
     state=absent
   when:
@@ -61,6 +61,6 @@
   shell: "sudo runuser -l root -c 'vagrant box add -f xenial /tmp/vagrant-lxc-xenial-amd64.box && rm /tmp/vagrant-lxc-xenial-amd64.box'"
   ignore_errors: yes
 
-- name: "Run vagrant-lxc"
-  shell: "sudo runuser -l root -c 'cd /vagrant/vagrant-host/ && vagrant up'"
-  ignore_errors: yes
+#- name: "Run vagrant-lxc"
+#  shell: "sudo runuser -l root -c 'cd /vagrant/vagrant-host/ && vagrant up'"
+#  ignore_errors: yes

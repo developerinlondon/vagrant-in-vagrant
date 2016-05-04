@@ -7,9 +7,9 @@
     - vars/local.yml
 
   roles:
-    - osupgrade
-    - lxc
-    - vagrant
+    - { role: osupgrade, tags: [ 'osupgrade' ] }
+    - { role: lxc, tags: [ 'lxc' ] }
+    - { role: vagrant, tags: [ 'vagrant' ] }
 
   tags:
     - local

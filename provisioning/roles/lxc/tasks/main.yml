@@ -1,13 +1,13 @@
 ---
 - name: "Update apt cache."
-  when: 
+  when:
     ansible_distribution == 'Ubuntu'
-  apt: 
+  apt:
     update_cache=yes
     cache_valid_time=600
 
 - name: "Install LXC utils"
-  when: 
+  when:
     ansible_distribution == 'Ubuntu'
   apt:
     pkg="{{ item }}"

@@ -1,25 +1,25 @@
 ---
 - name: "Update apt cache."
-  when: 
+  when:
     ansible_distribution == 'Ubuntu'
-  apt: 
+  apt:
     update_cache=yes
     cache_valid_time=600
 
 - name: "Upgrade OS."
-  when: 
+  when:
     ansible_distribution == 'Ubuntu'
-  apt: upgrade=dist 
+  apt: upgrade=dist
 
 - name: "Check if packages need to be autoremoved"
-  when: 
+  when:
     ansible_distribution == 'Ubuntu'
-  shell: > 
+  shell: >
     apt-get --dry-run autoremove | grep "to remove" | sed "s/^[0-9]\+ upgraded, [0-9]\+ newly installed, \([0-9]\+\) to remove and [0-9]\+ not upgraded\.$/\1/"
   register: check_autoremove
   changed_when: check_autoremove.stdout != "0"
 
 - name: "Autoremove unused packages"
-  when: 
+  when:
     ansible_distribution == 'Ubuntu' and check_autoremove.changed
   command: apt-get -y autoremove
