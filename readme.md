@@ -24,3 +24,6 @@ https://github.com/developerinlondon/vagrant-lxc-base-boxes/tree/feature/add-ans
 
 This will give a vagrant-lxc container that is running our custom lxc container.
 
+running ansible locally:
+------------------------
+sudo ansible-playbook /vagrant/provisioning/playbook.yml --inventory-file=/vagrant/provisioning/inventory --tags=local --connection=local

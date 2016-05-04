@@ -21,8 +21,8 @@
 
 - name: "Download vagrant"
   get_url: 
-    url={{ vagrant_url }} 
-    dest={{ vagrant_dir_tmp }}/vagrant.deb 
+    url={{ vagrant_url }}
+    dest={{ vagrant_dir_tmp }}/vagrant.deb
     force=yes
   when:
     result | failed
@@ -39,7 +39,7 @@
 
 - name: "Cleanup temporary directory"
   file: 
-    name={{ tempdir.stdout }} 
+    name={{ tempdir.stdout }}
     state=absent
   when:
     result | failed

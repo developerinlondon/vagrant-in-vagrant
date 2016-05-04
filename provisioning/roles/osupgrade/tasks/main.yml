@@ -18,7 +18,6 @@
     apt-get --dry-run autoremove | grep "to remove" | sed "s/^[0-9]\+ upgraded, [0-9]\+ newly installed, \([0-9]\+\) to remove and [0-9]\+ not upgraded\.$/\1/"
   register: check_autoremove
   changed_when: check_autoremove.stdout != "0"
-  
 
 - name: "Autoremove unused packages"
   when: 

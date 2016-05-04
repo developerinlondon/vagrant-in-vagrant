@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
       ansible.limit = 'all'
       # Run commands as root.
       ansible.sudo = true
-      # ansible.raw_arguments = ['-v']
+      ansible.raw_arguments = ['-vvv']
       # run only local enviroment
       ansible.tags = 'local'
     end
