@@ -27,9 +27,7 @@ nodes = load_config( NODES_FILE )
 ###################################################################################################
 
 Vagrant.configure('2') do |config|
-  config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
-  config.hostmanager.manage_guest = true
 
   nodes.each do |node|
     config.vm.define node[:name] do |config|
