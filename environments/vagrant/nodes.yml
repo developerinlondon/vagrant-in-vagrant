@@ -21,16 +21,8 @@
         :host_dir: "#{ENV['PWD']}/../devops-non-production"
         :vm_dir: "/devops-non-production"
         :disabled: false
-      - 
-        :host_dir: "#{ENV['PWD']}/provisioners/hosts"
-        :vm_dir: "/hosts"
-        :disabled: false
     :provisioners:
       -
         :path: "provisioners/init.sh"
       -
         :path: "provisioners/install_ansible.sh"
-      -
-        :path: "provisioners/hosts/hostsgen.sh"
-      -
-        :path: "provisioners/hosts/provision.sh"

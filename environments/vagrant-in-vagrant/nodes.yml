@@ -22,11 +22,6 @@
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
         :disabled: false
-      - 
-        :host_dir: "/hosts"
-        :vm_dir: "/hosts"
-        :disabled: false
-
   - 
     :name: "ubuntu-16-04"
     :box: "developerinlondon/ubuntu_lxc_xenial_x64"
@@ -50,10 +45,6 @@
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
         :disabled: false
-      - 
-        :host_dir: "/hosts"
-        :vm_dir: "/hosts"
-        :disabled: false
   - 
     :name: "ubuntu-001"
     :box: "developerinlondon/ubuntu_lxc_wily_x64"
@@ -76,37 +67,6 @@
       -
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
-        :disabled: false
-      - 
-        :host_dir: "/hosts"
-        :vm_dir: "/hosts"
-        :disabled: false
-  - 
-    :name: "ubuntu-001"
-    :box: "developerinlondon/ubuntu_lxc_wily_x64"
-    :cpu_count: "1"
-    :memory: "1024"
-    :ip: "192.168.0.20"
-    :synced_folders: 
-      -
-        :host_dir: "/ansible"
-        :vm_dir: "/ansible"
-        :disabled: false
-      - 
-        :host_dir: "/artemis"
-        :vm_dir: "/artemis"
-        :disabled: false
-      -
-        :host_dir: "/terraform"
-        :vm_dir: "/terraform"
-        :disabled: false
-      -
-        :host_dir: "/devops-non-production"
-        :vm_dir: "/devops-non-production"
-        :disabled: false
-      - 
-        :host_dir: "/hosts"
-        :vm_dir: "/hosts"
         :disabled: false
   - 
     :name: "ubuntu-002"
@@ -131,10 +91,6 @@
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
         :disabled: false
-      - 
-        :host_dir: "/hosts"
-        :vm_dir: "/hosts"
-        :disabled: false
   - 
     :name: "ubuntu-003"
     :box: "developerinlondon/ubuntu_lxc_wily_x64"
@@ -157,10 +113,6 @@
       -
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
-        :disabled: false
-      - 
-        :host_dir: "/hosts"
-        :vm_dir: "/hosts"
         :disabled: false
   - 
     :name: "ubuntu-004"
@@ -185,10 +137,6 @@
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
         :disabled: false
-      - 
-        :host_dir: "/hosts"
-        :vm_dir: "/hosts"
-        :disabled: false
   - 
     :name: "ubuntu-005"
     :box: "developerinlondon/ubuntu_lxc_wily_x64"
@@ -211,8 +159,4 @@
       -
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
-        :disabled: false
-      - 
-        :host_dir: "/hosts"
-        :vm_dir: "/hosts"
         :disabled: false
