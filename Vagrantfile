@@ -70,11 +70,13 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "#{ENV['PWD']}/../artemis", "/artemis"
   config.vm.synced_folder "#{ENV['PWD']}/../devops-non-production", "/devops-non-production"
   config.vm.synced_folder "#{ENV['PWD']}/../terraform", "/terraform"
+  config.vm.synced_folder "#{ENV['PWD']}/provisioners/hosts", "/hosts"
 
   config.vm.define "workstation" do |workstation|
     workstation.vm.box = "ubuntu/wily64"
     workstation.vm.provision :shell, path: "provisioners/init.sh", args: ["default"]
     workstation.vm.provision :shell, path: "provisioners/install_ansible.sh", args: ["default"]
+    workstation.vm.provision :shell, path: "provisioners/hosts/hostsgen.sh", args: ["default"]
   end
 
   config.vm.provider :virtualbox do |v|
