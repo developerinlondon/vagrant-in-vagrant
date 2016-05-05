@@ -1,0 +1,28 @@
+---
+  - 
+    :name: "workstation"
+    :box: "ubuntu/wily64"
+    :cpu_count: "2"
+    :memory: "2048"
+    :synced_folders: 
+      - 
+        :host_dir: "#{ENV['PWD']}/../ansible"
+        :vm_dir: "/ansible"
+        :disabled: false
+      - 
+        :host_dir: "#{ENV['PWD']}/../artemis"
+        :vm_dir: "/artemis"
+        :disabled: false
+      - 
+        :host_dir: "#{ENV['PWD']}/../terraform"
+        :vm_dir: "/terraform"
+        :disabled: false
+      - 
+        :host_dir: "#{ENV['PWD']}/../devops-non-production"
+        :vm_dir: "/devops-non-production"
+        :disabled: false
+    :provisioners:
+      -
+        :path: "provisioners/init.sh"
+      -
+        :path: "provisioners/install_ansible.sh"
