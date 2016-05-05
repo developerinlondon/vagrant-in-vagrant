@@ -32,3 +32,5 @@
         :path: "provisioners/install_ansible.sh"
       -
         :path: "provisioners/hosts/hostsgen.sh"
+      -
+        :path: "provisioners/hosts/provision.sh"
