@@ -17,7 +17,6 @@ NODES_FILE = 'environment/nodes.yml'
 ###################################################################################################
 
 def load_config( config_file)
-  #JSON.parse(File.read(config_file), options)
   YAML.load_file(config_file)
 end
 
