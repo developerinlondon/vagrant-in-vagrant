@@ -2,5 +2,5 @@
 
 set -ex
 
-apt-get install -y git
+apt-get install -y git htop
 apt-get update

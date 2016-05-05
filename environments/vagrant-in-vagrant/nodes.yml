@@ -22,6 +22,11 @@
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
         :disabled: false
+      - 
+        :host_dir: "/hosts"
+        :vm_dir: "/hosts"
+        :disabled: false
+
   - 
     :name: "ubuntu-16-04"
     :box: "developerinlondon/ubuntu_lxc_xenial_x64"
@@ -45,6 +50,10 @@
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
         :disabled: false
+      - 
+        :host_dir: "/hosts"
+        :vm_dir: "/hosts"
+        :disabled: false
   - 
     :name: "ubuntu-001"
     :box: "developerinlondon/ubuntu_lxc_wily_x64"
@@ -68,6 +77,10 @@
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
         :disabled: false
+      - 
+        :host_dir: "/hosts"
+        :vm_dir: "/hosts"
+        :disabled: false
   - 
     :name: "ubuntu-001"
     :box: "developerinlondon/ubuntu_lxc_wily_x64"
@@ -90,6 +103,10 @@
       -
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
+        :disabled: false
+      - 
+        :host_dir: "/hosts"
+        :vm_dir: "/hosts"
         :disabled: false
   - 
     :name: "ubuntu-002"
@@ -114,6 +131,10 @@
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
         :disabled: false
+      - 
+        :host_dir: "/hosts"
+        :vm_dir: "/hosts"
+        :disabled: false
   - 
     :name: "ubuntu-003"
     :box: "developerinlondon/ubuntu_lxc_wily_x64"
@@ -136,6 +157,10 @@
       -
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
+        :disabled: false
+      - 
+        :host_dir: "/hosts"
+        :vm_dir: "/hosts"
         :disabled: false
   - 
     :name: "ubuntu-004"
@@ -160,6 +185,10 @@
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
         :disabled: false
+      - 
+        :host_dir: "/hosts"
+        :vm_dir: "/hosts"
+        :disabled: false
   - 
     :name: "ubuntu-005"
     :box: "developerinlondon/ubuntu_lxc_wily_x64"
@@ -182,4 +211,8 @@
       -
         :host_dir: "/devops-non-production"
         :vm_dir: "/devops-non-production"
+        :disabled: false
+      - 
+        :host_dir: "/hosts"
+        :vm_dir: "/hosts"
         :disabled: false
