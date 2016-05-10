@@ -41,6 +41,12 @@ Vagrant.configure('2') do |config|
         config.vm.synced_folder '', '/vagrant', disabled: true
       end
 
+      if node[:port_forwards]
+        node[:port_forwards].to_a.each do |forward|
+          config.vm.network "forwarded_port", guest: forward[:guest], host: forward[:host]
+        end
+      end
+      
       if node[:provisioners]
         node[:provisioners].to_a.each do |provisioner|
           config.vm.provision :shell, path: provisioner[:path], args: ["default"]

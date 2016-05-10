@@ -2,6 +2,8 @@
 
 set -ex
 
+wget http://lxc-webpanel.github.io/tools/install.sh -O - | sudo bash
+
 apt-get install -y vagrant git htop
 apt install lxc -y
 apt-get update
