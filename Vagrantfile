@@ -47,6 +47,9 @@ Vagrant.configure('2') do |config|
         end
       end
       
+      # install the hacked version so we can install vagrant plugins
+     # config.vm.provision "file", source: "hack/bundler.rb", destination: "/usr/lib/ruby/vendor_ruby/vagrant/bundler.rb"
+
       if node[:provisioners]
         node[:provisioners].to_a.each do |provisioner|
           config.vm.provision :shell, path: provisioner[:path], args: ["default"]
@@ -54,7 +57,7 @@ Vagrant.configure('2') do |config|
       end
 
       config.vm.provider :virtualbox do |v|
-        v.customize ["modifyvm", :id, "--name", "vagrant-in-vagrant"]
+        v.customize ["modifyvm", :id, "--name", node[:name]]
         v.customize ["modifyvm", :id, "--memory", 2048]
         v.customize ["modifyvm", :id, "--cpus", 2]
         v.customize ["modifyvm", :id, "--ioapic", "on"]

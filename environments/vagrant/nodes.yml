@@ -1,7 +1,7 @@
 ---
   - 
-    :name: "workstation"
-    :box: "ubuntu/wily64"
+    :name: "xenial"
+    :box: "geerlingguy/ubuntu1604"
     :cpu_count: "2"
     :memory: "2048"
     :synced_folders: 
@@ -27,6 +27,37 @@
         :host: 5000
     :provisioners:
       -
-        :path: "provisioners/init.sh"
+        :path: "provisioners/init_xenial.sh"
+      -
+        :path: "provisioners/install_ansible.sh"
+  - 
+    :name: "wily"
+    :box: "ubuntu/wily64"
+    :cpu_count: "2"
+    :memory: "2048"
+    :synced_folders: 
+      - 
+        :host_dir: "#{ENV['PWD']}/../ansible"
+        :vm_dir: "/ansible"
+        :disabled: false
+      - 
+        :host_dir: "#{ENV['PWD']}/../artemis"
+        :vm_dir: "/artemis"
+        :disabled: false
+      - 
+        :host_dir: "#{ENV['PWD']}/../terraform"
+        :vm_dir: "/terraform"
+        :disabled: false
+      - 
+        :host_dir: "#{ENV['PWD']}/../devops-non-production"
+        :vm_dir: "/devops-non-production"
+        :disabled: false
+    :port_forwards:
+      -
+        :guest: 5000
+        :host: 5050
+    :provisioners:
+      -
+        :path: "provisioners/init_wily.sh"
       -
         :path: "provisioners/install_ansible.sh"

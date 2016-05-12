@@ -32,8 +32,6 @@ Vagrant.configure('2') do |config|
     config.vm.define node[:name] do |config|
 
       config.vm.box = node[:box]
-      config.vm.provision :hostmanager
-      config.vm.provision :shell, path: '../provisioners/init_lxc.sh', args: ["default"]
 
       if node[:synced_folders]
         node[:synced_folders].to_a.each do |sfolder|
@@ -42,6 +40,15 @@ Vagrant.configure('2') do |config|
       else
         config.vm.synced_folder '', '/vagrant', disabled: true
       end
+      
+      config.vm.provision :hostmanager
+
+      if node[:provisioners]
+        node[:provisioners].to_a.each do |provisioner|
+          config.vm.provision :shell, path: provisioner[:path], args: ["default"]
+        end
+      end
+
 
       config.vm.provider 'lxc' do |lxc|
         lxc.customize 'cgroup.memory.limit_in_bytes', "#{node[:memory]}M"
