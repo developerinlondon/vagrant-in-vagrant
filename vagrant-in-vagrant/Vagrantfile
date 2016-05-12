@@ -5,15 +5,13 @@
 
 require 'yaml'
 
-Vagrant.require_version ">= 1.5"
+###################################################################################################
+
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'lxc'
 
 ###################################################################################################
 
-ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
-
-###################################################################################################
-
-NODES_FILE = 'environments/vagrant/nodes.yml'
+NODES_FILE = '../environments/vagrant-in-vagrant/nodes.yml'
 
 ###################################################################################################
 
@@ -28,6 +26,8 @@ nodes = load_config( NODES_FILE )
 ###################################################################################################
 
 Vagrant.configure('2') do |config|
+  config.hostmanager.manage_host = true
+
   nodes.each do |node|
     config.vm.define node[:name] do |config|
 
@@ -35,20 +35,13 @@ Vagrant.configure('2') do |config|
 
       if node[:synced_folders]
         node[:synced_folders].to_a.each do |sfolder|
-          config.vm.synced_folder eval("\"" + sfolder[:host_dir] + "\""), sfolder[:vm_dir] , disabled: sfolder[:disabled]
+          config.vm.synced_folder sfolder[:host_dir], sfolder[:vm_dir] , disabled: sfolder[:disabled]
         end
       else
         config.vm.synced_folder '', '/vagrant', disabled: true
       end
-
-      if node[:port_forwards]
-        node[:port_forwards].to_a.each do |forward|
-          config.vm.network "forwarded_port", guest: forward[:guest], host: forward[:host]
-        end
-      end
       
-      # install the hacked version so we can install vagrant plugins
-     # config.vm.provision "file", source: "hack/bundler.rb", destination: "/usr/lib/ruby/vendor_ruby/vagrant/bundler.rb"
+      config.vm.provision :hostmanager
 
       if node[:provisioners]
         node[:provisioners].to_a.each do |provisioner|
@@ -56,12 +49,10 @@ Vagrant.configure('2') do |config|
         end
       end
 
-      config.vm.provider :virtualbox do |v|
-        v.customize ["modifyvm", :id, "--name", node[:name]]
-        v.customize ["modifyvm", :id, "--memory", 2048]
-        v.customize ["modifyvm", :id, "--cpus", 2]
-        v.customize ["modifyvm", :id, "--ioapic", "on"]
-        v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+
+      config.vm.provider 'lxc' do |lxc|
+        lxc.customize 'cgroup.memory.limit_in_bytes', "#{node[:memory]}M"
+        lxc.customize 'utsname', "#{node[:name]}"
       end
     end
   end
